@@ -1,0 +1,35 @@
+import java.util.Scanner;
+import java.util.Random;
+
+
+class NumberGuess{
+	public static int generateRandomNumber(int min, int max){
+        Random random = new Random();
+        return random.nextInt(max - min + 1) + min;
+    }
+	
+	public static void main(String[] args){
+		int random_number = generateRandomNumber(1, 100);
+		int choice_count = 0;
+		int choice;
+		Scanner sc = new Scanner(System.in);
+		
+		while(true){
+			System.out.print("Enter Your Number: ");
+			choice = sc.nextInt();
+			sc.nextLine();
+			choice_count++;
+			
+			if(choice == random_number){
+				System.out.println("Congrats!! You guessed it using " + choice_count + " guess.\n");
+				break;
+			}
+			else if(choice < random_number){
+				System.out.println("Number is GREATER than your choice.\n");
+			}
+			else{
+				System.out.println("Number is LESS than your choice.\n");
+			}
+		}
+    }
+}
